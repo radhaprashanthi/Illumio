@@ -29,17 +29,17 @@ Implement an interface or an application through which we can validate the netwo
 
 
 # Questions
+
 1. Do we have to return true if atleast one of the rule is satisfied?
     ```
-    example: inbound, tcp, 4567892, 1.1.1.1
-    the above example validates direction and protocol. but fails for port and ipaddress. SO Should we return TRUE or FALSE?
+    example: inbound, tcp, 4567892, 1.1.1.1the above example has valid direction and protocol but fails for port and ip address. SO, Should we return TRUE or FALSE?
+
+    Assumption: True is returned if and only if all the 4 parameters are valid.
     ```
 
 2. For ranges of ports or IP adress - 
     ```
-    example: inbound, tcp, 10-754673, 1.1.1.1 
-    we have ports that are valid from 10 to 65535.
-    Should our function be returning true for those and false for out of range
-    OR SHOULD we considering this as one input and return FALSE as outerbound is 
-    out of range.
+    example: inbound, tcp, 10-754673, 1.1.1.1 we have ports that are valid from 10 to 65535.Should our function be returning true for the valid range and false for out of rangeOR SHOULD we be considering this as one input and return FALSE as upper bound is out of range.
+
+    Assumption: Returning True if and only if both lower and upper bounds are valid for port and IP address ranges and not comparing individual port and IP addresses withing the range.
     ```
