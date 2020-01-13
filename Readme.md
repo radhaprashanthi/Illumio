@@ -1,29 +1,39 @@
 # Goal
-    Implement an interface or an application through which we can validate the network packets based on given set of rules.
+
+Implement an interface or an application through which we can validate the network packets based on given set of rules.
 
 # Requirements
     1. Python 3.6
     2. VirtualEnv - `virtualenv -p python3.6 illumio36`
 
 # Execution Guidelines
-    ```
-    python main.py --> this will run the main function which reads the network pakcets read from file
+1. How to run the main function?
+    `python main.py`
+    - which will result in output from input file,
+    - and couple of examples executing `accept_packet` method
 
-    python -m unittest firewall_test.py --> running test cases
-    ```
+2. How to run tests?
+    `python -m unittest firewall_test.py`
 
 # Optimization:
+1. Time Complexity:
+    - Already implemented a better way of identifying ports and IP addresses ranges.
+    - I am reading the data and validating them in O(n) time which is linear.
 
+2. Space Complexity:
+    - I am using a dictionary to store the results of newtwork packet whether it is valid or not, this can be improved to store it in a file or disk instead of storing it in memory.
+    - For given rules, currently there are 4, so I used them directly. But if there are many rules, we can keep a look up data structure or table through which we can save in-memory space for rules.
 
+3. Distributed Computing:
+    - If its a huge file containing millions of records, we can use hadoop or Spark to divide the file into data chunks and process the file parallely.
 
 
 # Questions
-
 1. Do we have to return true if atleast one of the rule is satisfied?
     ```
     example: inbound, tcp, 4567892, 1.1.1.1
     the above example validates direction and protocol. but fails for port and ipaddress. SO Should we return TRUE or FALSE?
-```
+    ```
 
 2. For ranges of ports or IP adress - 
     ```
@@ -33,7 +43,3 @@
     OR SHOULD we considering this as one input and return FALSE as outerbound is 
     out of range.
     ```
-
-3. Should we consider our input from csv file as Strings and then convert them into INT while passing them to accpet_packet function?
-
-
