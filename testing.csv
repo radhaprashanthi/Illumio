@@ -1,0 +1,3 @@
+direction,protocol,port,ip_address
+inbound,tcp,80,192.168.1.2
+outbound,tcp,10000-20000,765.168.10.11
